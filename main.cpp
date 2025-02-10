@@ -4,17 +4,21 @@
 
 int main()
 {
-    Table table;
+    Parameter* parameter = new Parameter("Большие перерывы", "значение", "good", true);
 
-    table.insert(new Parameter("Большие перерывы", "0", "good", true));
-    table.insert(new Parameter("Большие перерывы", "1", "good", true));
-    table.insert(new Parameter("Большие перерывы", "2", "good", true));
+    cout << *parameter;
+
+    // Table table;
+
+    // table.insert(new Parameter("Большие перерывы", "0", "good", true));
+    // table.insert(new Parameter("Большие перерывы", "1", "good", true));
+    // table.insert(new Parameter("Большие перерывы", "2", "good", true));
     
-    // table.update(3, new Parameter("Отредаченный параметр", "харашо", "good", true));
+    // // table.update(3, new Parameter("Отредаченный параметр", "харашо", "good", true));
 
-    table.remove(2);
+    // table.remove(2);
 
-    cout << table << endl;
+    // cout << table << endl;
     // demonstrateTable();
 
     // delete &table;

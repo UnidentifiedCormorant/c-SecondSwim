@@ -6,28 +6,30 @@ using namespace std;
 class Parameter 
 {
     private:
-        string _name, _value, _rating;
+        char* _name;
+        char* _value;
+        char* _rating;
         bool _visible;
     
     public:
         //Конструктор по умолчанию
-        Parameter(): _name("Пустой параметр"), _value("none"), _rating("empty"), _visible(false) {};
+        Parameter();
 
-        //Параметрический конструктор
+        // //Параметрический конструктор
         Parameter(
-            string name, 
-            string value, 
-            string rating, 
-            bool visible = true
+            const char* name, 
+            const char* value, 
+            const char* rating, 
+            bool visible
         );
 
         //Конструктор копирования
-        Parameter(const Parameter& parameter);
+        // Parameter(const Parameter& parameter);
 
         //Сеттеры
-        void setName(string name);
-        void setValue(string value);
-        void setRating(string rating);
+        void setName(const char* name);
+        void setValue(const char* value);
+        void setRating(const char* rating);
         void setVisible(bool visible);
 
         //Геттеры
@@ -43,5 +45,5 @@ class Parameter
         friend ostream& operator << (ostream& out, Parameter& parameter);
 
         //Перегрузка операции присваивания
-        const Parameter& operator=(const Parameter& parameter);
+        // const Parameter& operator=(const Parameter& parameter);
 };
