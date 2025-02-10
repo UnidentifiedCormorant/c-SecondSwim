@@ -11,7 +11,7 @@ class Parameter
     
     public:
         //Конструктор по умолчанию
-        Parameter(): _name("Parameter"), _value("0"), _rating("great"), _visible(false) {};
+        Parameter(): _name("Пустой параметр"), _value("none"), _rating("empty"), _visible(false) {};
 
         //Параметрический конструктор
         Parameter(

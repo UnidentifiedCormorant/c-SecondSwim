@@ -6,13 +6,15 @@ int main()
 {
     Table table;
 
+    table.insert(new Parameter("Большие перерывы", "0", "good", true));
     table.insert(new Parameter("Большие перерывы", "1", "good", true));
     table.insert(new Parameter("Большие перерывы", "2", "good", true));
-    table.insert(new Parameter("Большие перерывы", "3", "good", true));
-    table.insert(new Parameter("Большие перерывы", "4", "good", true));
-    table.insert(new Parameter("Большие перерывы", "5", "good", true));
     
-    cout << table;
+    // table.update(3, new Parameter("Отредаченный параметр", "харашо", "good", true));
+
+    table.remove(2);
+
+    cout << table << endl;
     // demonstrateTable();
 
     // delete &table;

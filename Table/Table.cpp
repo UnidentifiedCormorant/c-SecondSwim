@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Table.h"
-#include "../Exceptions/InsertException.h"
-#include "../Exceptions/GetRecordException.h"
+#include "../Exceptions/IndexException.h"
 
 Table::Table(){
     _records = new Parameter[MAX_RECORDS];
@@ -12,7 +11,7 @@ Table::Table(){
 // }
 
 void Table::insert(Parameter* parameter){
-    _lastRecordPosition = _lastRecordPosition + 1;
+    _lastRecordPosition++;
 
     if(_lastRecordPosition > MAX_RECORDS - 1){
 
@@ -23,12 +22,32 @@ void Table::insert(Parameter* parameter){
             *recordsAdvanced++ = *_records++;
         }
 
-        //Присваиваем указатель сразу со сдвигом указателя массива в начало 
+        //Присваиваем сразу со сдвигом указателя массива в начало 
         _records = recordsAdvanced - (_maxRecords - 1);
     }
 
     _records[_lastRecordPosition] = *parameter;
-} 
+}
+
+void Table::remove(unsigned recordPosition){
+    if(_lastRecordPosition < recordPosition){
+        throw IndexException();
+    }
+    
+    for(int i = recordPosition; i < 0; i++){
+        _records[i] = _records[i + 1];
+    }
+
+    _lastRecordPosition--;
+}
+
+void Table::update(unsigned recordPosition, Parameter* parameter){
+    if(_lastRecordPosition < recordPosition){
+        throw IndexException();
+    }
+
+    _records[recordPosition] = *parameter;
+}
 
 ostream& operator << (ostream& out, Table& table){
     for(int i = 0; i <= table._lastRecordPosition; i++){

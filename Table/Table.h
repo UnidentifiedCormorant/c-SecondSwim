@@ -7,7 +7,7 @@ const int MAX_RECORDS = 3;
 class Table {
     public:
         Parameter* _records;
-        int _lastRecordPosition = 0;
+        int _lastRecordPosition = -1; //Соответствует индексу элемента в массиве
         int _maxRecords = MAX_RECORDS;
 
     public:
@@ -16,8 +16,8 @@ class Table {
         // ~Table();
 
         void insert(Parameter* parameter);
-        void remove(int recordPosition);
-        void update(int recordPosition, Parameter* parameter);
+        void remove(unsigned recordPosition);
+        void update(unsigned recordPosition, Parameter* parameter);
         
         int count();
 
