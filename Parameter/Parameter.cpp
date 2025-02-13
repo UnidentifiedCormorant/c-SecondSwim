@@ -37,6 +37,14 @@ Parameter::Parameter(
     setVisible(visible);
 }
 
+//Конструктор копирования
+Parameter::Parameter(const Parameter& parameter){
+    _name = parameter._name;
+    _value = parameter._value;
+    _rating = parameter._rating;
+    _value = parameter._value;
+}
+
 //Сеттеры
 void Parameter::setName(const char* name){
     _name = copyString(_name, name);
@@ -88,16 +96,16 @@ ostream& operator << (ostream& out, Parameter& parameter){
 }
 
 // //Реализация перегрузки операции присваивания
-// const Parameter& Parameter::operator= (const Parameter& parameter){
+const Parameter& Parameter::operator= (const Parameter& parameter){
             
-//     if (&parameter == this){
-//         return *this;
-//     }
+    if (&parameter == this){
+        return *this;
+    }
 
-//     setName(parameter._name);
-//     setValue(parameter._value);
-//     setRating(parameter._rating);
-//     setVisible(parameter._visible);
+    setName(parameter._name);
+    setValue(parameter._value);
+    setRating(parameter._rating);
+    setVisible(parameter._visible);
 
-//     return *this;
-// }
+    return *this;
+}

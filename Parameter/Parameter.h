@@ -15,7 +15,7 @@ class Parameter
         //Конструктор по умолчанию
         Parameter();
 
-        // //Параметрический конструктор
+        //Параметрический конструктор
         Parameter(
             const char* name, 
             const char* value, 
@@ -24,7 +24,7 @@ class Parameter
         );
 
         //Конструктор копирования
-        // Parameter(const Parameter& parameter);
+        Parameter(const Parameter& parameter);
 
         //Сеттеры
         void setName(const char* name);
@@ -45,5 +45,5 @@ class Parameter
         friend ostream& operator << (ostream& out, Parameter& parameter);
 
         //Перегрузка операции присваивания
-        // const Parameter& operator=(const Parameter& parameter);
+        const Parameter& operator=(const Parameter& parameter);
 };

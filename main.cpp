@@ -6,7 +6,11 @@ int main()
 {
     Parameter* parameter = new Parameter("Большие перерывы", "значение", "good", true);
 
-    cout << *parameter;
+    Parameter* parameterCopied = new Parameter();
+
+    *parameterCopied = *parameter;
+
+    cout << *parameterCopied;
 
     // Table table;
 
