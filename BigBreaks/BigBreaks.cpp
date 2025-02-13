@@ -1,57 +1,67 @@
-// #include "BigBreaks.h"
+#include "BigBreaks.h"
 
-// BigBreaks::BigBreaks(){
-//     _hasBreaks = false;
-//     _maxBreak = 0;
-//     _breaksCount = 0; 
-// }
+BigBreaks::BigBreaks(
+    const char* name, 
+    const char* value, 
+    const char* rating, 
+    bool visible,
 
-// BigBreaks::BigBreaks(
-//     string name, string value, string rating, bool visible,
-//     bool hasBreaks, int maxBreak, int breaksCount
-// ): Parameter(name, value, rating, visible) {
+    bool hasBreaks, 
+    int maxBreak, 
+    int breaksCount
+): Parameter(name, value, rating, visible) {
 
-//     setHasBreaks(hasBreaks);
-//     setMaxBreak(maxBreak);
-//     setBreaksCount(breaksCount);
+    setHasBreaks(hasBreaks);
+    setMaxBreak(maxBreak);
+    setBreaksCount(breaksCount);
 
-// };
+};
 
-// BigBreaks::BigBreaks(const BigBreaks& bigBreaks){
+BigBreaks::BigBreaks(const BigBreaks& bigBreak){
+    _hasBreaks = bigBreak._hasBreaks;
+    _maxBreak = bigBreak._maxBreak;
+    _breaksCount = bigBreak._breaksCount;
+};
 
-// };
+void BigBreaks::setHasBreaks(bool hasBreaks){
+    _hasBreaks = hasBreaks;
+};
+void BigBreaks::setMaxBreak(int maxBreak){
+    _maxBreak = maxBreak;
+};
+void BigBreaks::setBreaksCount(int breaksCount){
+    _breaksCount = breaksCount;
+};
 
-// void BigBreaks::setHasBreaks(bool hasBreaks){
-//     _hasBreaks = hasBreaks;
-// };
-// void BigBreaks::setMaxBreak(int maxBreak){
-//     _maxBreak = maxBreak;
-// };
-// void BigBreaks::setBreaksCount(int breaksCount){
-//     _breaksCount = breaksCount;
-// };
+bool BigBreaks::getHasBreaks(){
+    return _hasBreaks;
+};
+int BigBreaks::getMaxBreak(){
+    return _maxBreak;
+};
+int BigBreaks::getBreaksCount(){
+    return _breaksCount;
+};
 
-// bool BigBreaks::getHasBreaks(){
-//     return _hasBreaks;
-// };
-// int BigBreaks::getMaxBreak(){
-//     return _maxBreak;
-// };
-// int BigBreaks::getBreaksCount(){
-//     return _breaksCount;
-// };
+ostream& operator << (ostream& out, BigBreaks& bigBreaks){
+    return out
+        << "Название параметра: " << bigBreaks.getName() << std::endl
+        << "Значение: " << bigBreaks.getValue() << std::endl
+        << "Оценка: " << bigBreaks.getRating() << std::endl
+        << "Отображение: " << (bigBreaks.getVisible() ? "true" : "false") << std::endl
+        << "Наличие перерывов: " << (bigBreaks.getHasBreaks() ? "есть" : "нет") << std::endl
+        << "Количество больших перерывов: " << bigBreaks.getBreaksCount() << endl
+        << "Максимальный перерыв: " << bigBreaks.getMaxBreak() << endl;
+};
 
-// BigBreaks::~BigBreaks(){
-    
-// };
+const BigBreaks& BigBreaks::operator= (const BigBreaks& bigBreak){
+    if (&bigBreak == this){
+        return *this;
+    }
 
-// ostream& operator << (ostream& out, BigBreaks& bigBreaks){
-//     return out
-//         << "Название параметра: " << bigBreaks.getName() << std::endl
-//         << "Значение: " << bigBreaks.getValue() << std::endl
-//         << "Оценка: " << bigBreaks.getRating() << std::endl
-//         << "Отображение: " << (bigBreaks.getVisible() ? "true" : "false") << std::endl
-//         << "Наличие перерывов: " << (bigBreaks.getHasBreaks() ? "есть" : "нет") << std::endl
-//         << "Количество больших перерывов: " << bigBreaks.getBreaksCount() << endl
-//         << "Максимальный перерыв: " << bigBreaks.getMaxBreak() << endl;
-// };
+    setHasBreaks(bigBreak._hasBreaks);
+    setMaxBreak(bigBreak._maxBreak);
+    setBreaksCount(bigBreak._maxBreak);
+
+    return *this;
+}

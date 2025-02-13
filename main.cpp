@@ -1,16 +1,37 @@
 #include <iostream>
+
 #include "Table/Table.h"
 #include "Parameter/Parameter.h"
+#include "BigBreaks/BigBreaks.h"
+#include "Table/Table.h"
 
 int main()
 {
-    Parameter* parameter = new Parameter("Большие перерывы", "значение", "good", true);
+    // BigBreaks* bigBreak = new BigBreaks(
+    //     "Тру большие",
+    //     "Их многа",
+    //     "good",
+    //     true,
 
-    Parameter* parameterCopied = new Parameter();
+    //     true,
+    //     69,
+    //     3
+    // );
 
-    *parameterCopied = *parameter;
+    // BigBreaks* bigBreakCopied = new BigBreaks(*bigBreak);
 
-    cout << *parameterCopied;
+    // // *bigBreakCopied = *bigBreak;
+
+    // cout << *bigBreakCopied;
+    // Parameter* parameter = new Parameter("Большие перерывы", "значение", "good", true);
+
+    // Parameter* parameterCopied = new Parameter();
+
+    // *parameterCopied = *parameter;
+
+    // cout << *parameterCopied;
+
+
 
     // Table table;
 
