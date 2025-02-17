@@ -63,20 +63,32 @@ void Parameter::setVisible(bool visible){
 }
 
 //Геттеры
-string Parameter::getName(){
+const char* Parameter::getName(){
     return _name;
 }
 
-string Parameter::getValue(){
+const char* Parameter::getValue(){
     return _value;
 }
 
-string Parameter::getRating(){
+const char* Parameter::getRating(){
     return _rating;
 }
 
 bool Parameter::getVisible(){
     return _visible;
+}
+
+void Parameter::set(
+    const char* name, 
+    const char* value, 
+    const char* rating, 
+    bool visible
+){
+    setName(name);
+    setValue(value);
+    setRating(rating);
+    setVisible(visible);
 }
 
 //Деструктор

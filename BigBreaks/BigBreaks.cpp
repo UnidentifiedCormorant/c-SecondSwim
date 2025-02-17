@@ -18,6 +18,12 @@ BigBreaks::BigBreaks(
 };
 
 BigBreaks::BigBreaks(const BigBreaks& bigBreak){
+    Parameter parameter = (Parameter)bigBreak;
+    setName(parameter.getName());
+    setValue(parameter.getValue());
+    setRating(parameter.getRating());
+    setVisible(parameter.getVisible());
+
     _hasBreaks = bigBreak._hasBreaks;
     _maxBreak = bigBreak._maxBreak;
     _breaksCount = bigBreak._breaksCount;
@@ -31,6 +37,26 @@ void BigBreaks::setMaxBreak(int maxBreak){
 };
 void BigBreaks::setBreaksCount(int breaksCount){
     _breaksCount = breaksCount;
+};
+
+void BigBreaks::set(
+    const char* name, 
+    const char* value, 
+    const char* rating, 
+    bool visible,
+
+    bool hasBreaks, 
+    int maxBreak, 
+    int breaksCount
+){
+    setName(name);
+    setValue(value);
+    setRating(rating);
+    setVisible(visible);
+
+    setHasBreaks(hasBreaks);
+    setMaxBreak(maxBreak);
+    setBreaksCount(breaksCount);
 };
 
 bool BigBreaks::getHasBreaks(){
@@ -58,6 +84,12 @@ const BigBreaks& BigBreaks::operator= (const BigBreaks& bigBreak){
     if (&bigBreak == this){
         return *this;
     }
+
+    Parameter parameter = (Parameter)bigBreak;
+    setName(parameter.getName());
+    setValue(parameter.getValue());
+    setRating(parameter.getRating());
+    setVisible(parameter.getVisible());
 
     setHasBreaks(bigBreak._hasBreaks);
     setMaxBreak(bigBreak._maxBreak);

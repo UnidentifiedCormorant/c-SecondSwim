@@ -3,7 +3,7 @@
 #include "../Parameter/Parameter.h"
 
 class BigBreaks: public Parameter {
-    public:
+    private:
         bool _hasBreaks;
         int _maxBreak, _breaksCount;
 
@@ -26,6 +26,17 @@ class BigBreaks: public Parameter {
         void setHasBreaks(bool hasBreaks);
         void setMaxBreak(int maxBreak);
         void setBreaksCount(int breaksCount);
+
+        void set(
+            const char* name, 
+            const char* value, 
+            const char* rating, 
+            bool visible,
+
+            bool hasBreaks, 
+            int maxBreak, 
+            int breaksCount
+        );
 
         bool getHasBreaks();
         int getMaxBreak();

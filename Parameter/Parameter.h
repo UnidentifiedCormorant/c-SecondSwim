@@ -32,10 +32,18 @@ class Parameter
         void setRating(const char* rating);
         void setVisible(bool visible);
 
+        //Метод для изменения всех полей вместе
+        void set(
+            const char* name, 
+            const char* value, 
+            const char* rating, 
+            bool visible
+        );
+
         //Геттеры
-        string getName();
-        virtual string getValue();
-        string getRating();
+        const char* getName();
+        const char* getValue();
+        const char* getRating();
         bool getVisible();
 
         //Деструктор
