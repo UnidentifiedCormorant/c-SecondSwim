@@ -12,7 +12,6 @@ void demonstrateParameter(){
     Parameter* parameter = new Parameter("Большие перерывы", "1", "good", true);
     cout << *parameter << endl;
 
-    //TODO: Здесь bool неправильно копируется
     cout << "Работа конструктора копирования" << endl;
     Parameter* parameterCopied = new Parameter(*parameter);
     cout << *parameterCopied << endl;
@@ -69,63 +68,77 @@ void demonstrateBigBreaks(){
     BigBreaks* bigBreaksEqual = new BigBreaks();
     *bigBreaksEqual = *bigBreakCopierd;
     cout << *bigBreaksEqual << endl;
+
+    cout << "Результат изменения полей по отдлеьности" << endl;
+    bigBreaksEqual->setName("Перерывы");
+    bigBreaksEqual->setRating("impressive");
+    bigBreaksEqual->setValue("есть");
+    bigBreaksEqual->setVisible(true);
+    bigBreaksEqual->setHasBreaks(true);
+    bigBreaksEqual->setMaxBreak(96);
+    bigBreaksEqual->setBreaksCount(2);
+
+    cout << "Чтение значения полей по отдельности" << endl;
+    cout << "Название параметра: " << bigBreaksEqual->getName() << std::endl
+         << "Значение: " << bigBreaksEqual->getValue() << std::endl
+         << "Оценка: " << bigBreaksEqual->getRating() << std::endl
+         << "Отображение: " << (bigBreaksEqual->getVisible() ? "true" : "false") << std::endl
+         << "Наличие перерывов: " << (bigBreaksEqual->getHasBreaks() ? "есть" : "нет") << std::endl
+         << "Количество больших перерывов: " << bigBreaksEqual->getBreaksCount() << endl
+         << "Максимальный перерыв: " << bigBreaksEqual->getMaxBreak() << endl << endl;
+
+    cout << "Изменение полей вместе" << endl;
+    bigBreaksEqual->set(
+        "Огромные перерывы",
+        "Много-премного",
+        "belissimo",
+        true,
+
+        true,
+        2,
+        100
+    );
+    cout << *bigBreaksEqual << endl;
+}
+
+void demonstrateTable(){
+    cout << "Класс Table" << endl << endl;
+
+    Table* table = new Table();
+    table->insert(new Parameter("Параметр", "0", "good", true));
+    table->insert(
+        new BigBreaks(
+            "Тру большие",
+            "1",
+            "good",
+            true,
+    
+            true,
+            69,
+            3
+        )
+    );
+    table->insert(new Parameter("Другой параметр", "2", "good", true));
+    
+    cout << "Содержимое таблицы: " << endl;
+    cout << "Количество записей: " << table->count() << endl;
+    cout << *table;
+
+    cout << "Изменение записей" << endl;
+    table->update(0, new Parameter("Другой параметр", "0", "updated", false));
+    cout << *table;
+
+    cout << "Удаление записей" << endl;
+    table->remove(1);
+    cout << *table;
+
+    cout << "Вывод одной записи, используя перегруженную операцию индексирования" << endl;
+    cout << (*table)[1];
 }
 
 int main()
 {
     demonstrateParameter();
     demonstrateBigBreaks();
-
-
-
-    // BigBreaks* bigBreakCopied = new BigBreaks(*bigBreak);
-
-    // // *bigBreakCopied = *bigBreak;
-
-    // cout << *bigBreakCopied;
-    // Parameter* parameter = new Parameter("Большие перерывы", "значение", "good", true);
-
-    // Parameter* parameterCopied = new Parameter();
-
-    // *parameterCopied = *parameter;
-
-    // cout << *parameterCopied;
-
-
-
-    // Table* table = new Table();
-
-    // table->insert(bigBreak);
-    // table->insert(new Parameter("Большие перерывы", "1", "good", true));
-    // table->insert(new Parameter("Большие перерывы", "2", "good", true));
-    // table->insert(new Parameter("Большие перерывы", "3", "good", true));
-
-    // table->update(3, new Parameter("Параметр", "харашо", "good", true));
-    
-    // table->remove(3);
-
-    // cout << *table;
-
-    // cout << table << endl;
-    // demonstrateTable();
-
-    // delete &table;
-
-    // table.remove(2);
-    // cout << "После первого удоления" << endl;
-    // for(int i = 0; i < 4; i++){
-    //     cout << table._records[i] << endl;
-    // }
-
-    // table.remove(1);
-    // cout << "После второго удоления" << endl;
-    // for(int i = 0; i < 4; i++){
-    //     cout << table._records[i] << endl;
-    // }
-
-    // table.update(
-    //     1,
-    //     new Parameter("Огромные перерывы", "3", "bad", true)
-    // );
-
+    demonstrateTable();
 }

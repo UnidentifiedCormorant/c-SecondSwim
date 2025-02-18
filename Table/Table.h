@@ -5,7 +5,7 @@
 const int MAX_RECORDS = 3;
 
 class Table {
-    private:
+    public:
         Parameter* _records;
         int _lastRecordPosition = -1; //Соответствует индексу элемента в массиве
         int _maxRecords = MAX_RECORDS;

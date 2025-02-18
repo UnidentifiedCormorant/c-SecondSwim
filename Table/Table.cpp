@@ -73,4 +73,3 @@ ostream& operator << (ostream& out, Table& table){
 Parameter& Table::operator[](int position){
     return _records[position];
 }
-

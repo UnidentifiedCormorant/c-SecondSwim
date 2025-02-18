@@ -42,7 +42,7 @@ Parameter::Parameter(const Parameter& parameter){
     _name = parameter._name;
     _value = parameter._value;
     _rating = parameter._rating;
-    _value = parameter._value;
+    _visible = parameter._visible;
 }
 
 //Сеттеры
@@ -104,7 +104,7 @@ ostream& operator << (ostream& out, Parameter& parameter){
         << "Название параметра: " << parameter.getName() << std::endl
         << "Значение: " << parameter.getValue() << std::endl
         << "Оценка: " << parameter.getRating() << std::endl
-        << "Отображение: " << (parameter.getVisible() ? "true" : "false") << std::endl;
+        << "Отображение: " << (parameter.getVisible() ? "Отображается" : "Не отображается") << std::endl;
 }
 
 // //Реализация перегрузки операции присваивания
