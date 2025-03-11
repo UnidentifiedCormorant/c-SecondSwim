@@ -3,7 +3,6 @@
 #include "Table/Table.h"
 #include "Parameter/Parameter.h"
 #include "BigBreaks/BigBreaks.h"
-#include "Table/Table.h"
 
 void demonstrateParameter(){
     cout << "Класс Parameter" << endl << endl;

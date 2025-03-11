@@ -22,15 +22,6 @@ Parameter::Parameter(
     const char* rating, 
     bool visible
 ){
-    _name = new char;
-    _name[0] = '\0';
-
-    _value = new char;
-    _value[0] = '\0';
-
-    _rating = new char;
-    _rating[0] = '\0';
-
     setName(name);
     setValue(value);
     setRating(rating);

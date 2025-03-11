@@ -1,18 +1,29 @@
 #pragma once
 #include <iostream>
 
+int getStringLength(const char* string) {
+
+  int i = 0;
+
+  while (string[i])
+    i++;
+
+  return i;
+}
+
 char* copyString(char* destination, const char* source) {
 
-  char* current = destination;
+  int length = getStringLength(source);
+  char* result = new char[length];
 
   while (*source != '\0') {
-    *current = *source;
+    *result = *source;
 
     source++;
-    current++;
+    result++;
   }
 
-  *current = '\0';
+  delete[] destination;
 
-  return destination;
+  return result - length;
 }
