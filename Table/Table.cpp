@@ -3,7 +3,7 @@
 #include "../Exceptions/IndexException.h"
 
 Table::Table(){
-    _records = new Parameter[MAX_RECORDS];
+    _records = new Parameter*[_maxRecords];
 }
 
 Table::~Table(){
@@ -13,20 +13,20 @@ Table::~Table(){
 void Table::insert(Parameter* parameter){
     _lastRecordPosition++;
 
-    if(_lastRecordPosition > MAX_RECORDS - 1){
+    if(_lastRecordPosition > _maxRecords - 1){
 
         _maxRecords++;
 
-        Parameter* recordsAdvanced = new Parameter[_maxRecords];
+        Parameter** recordsAdvanced = new Parameter*[_maxRecords];
         for(int i = 0; i <= _maxRecords - 2; i++){
-            *recordsAdvanced++ = *_records++;
+            recordsAdvanced[i] = _records[i];
         }
 
-        //Присваиваем сразу со сдвигом указателя массива в начало 
-        _records = recordsAdvanced - (_maxRecords - 1);
+        delete[] _records;
+        _records = recordsAdvanced;
     }
 
-    _records[_lastRecordPosition] = *parameter;
+    _records[_lastRecordPosition] = parameter;
 }
 
 void Table::remove(unsigned recordPosition){
@@ -34,18 +34,12 @@ void Table::remove(unsigned recordPosition){
         throw IndexException();
     }
 
+    delete _records[recordPosition];
     _maxRecords--;
 
-    Parameter* recordsAdvanced = new Parameter[_maxRecords];
-
-    for(int i = 0; i <= _maxRecords - 1; i++){
-        if(i == recordPosition){
-            *_records++;
-        }
-        *recordsAdvanced++ = *_records++;
+    for(int i = recordPosition; i <= _maxRecords; i++){
+        _records[i] = _records[i + 1];
     }
-
-    _records = recordsAdvanced - _maxRecords;
 
     _lastRecordPosition--;
 }
@@ -55,7 +49,8 @@ void Table::update(unsigned recordPosition, Parameter* parameter){
         throw IndexException();
     }
 
-    _records[recordPosition] = *parameter;
+    delete _records[recordPosition];
+    _records[recordPosition] = parameter;
 }
 
 int Table::count(){
@@ -64,12 +59,12 @@ int Table::count(){
 
 ostream& operator << (ostream& out, Table& table){
     for(int i = 0; i <= table._lastRecordPosition; i++){
-        out << table._records[i] << endl;
+        out << *table._records[i] << endl;
     }
 
     return out;
 }
 
-Parameter& Table::operator[](int position){
+Parameter* Table::operator[](int position){
     return _records[position];
 }

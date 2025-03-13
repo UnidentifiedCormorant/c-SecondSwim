@@ -98,7 +98,7 @@ ostream& operator << (ostream& out, Parameter& parameter){
         << "Отображение: " << (parameter.getVisible() ? "Отображается" : "Не отображается") << std::endl;
 }
 
-// //Реализация перегрузки операции присваивания
+//Реализация перегрузки операции присваивания
 const Parameter& Parameter::operator= (const Parameter& parameter){
             
     if (&parameter == this){

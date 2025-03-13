@@ -132,7 +132,7 @@ void demonstrateTable(){
     cout << *table;
 
     cout << "Вывод одной записи, используя перегруженную операцию индексирования" << endl;
-    cout << (*table)[1];
+    cout << *(*table)[1];
 }
 
 int main()
