@@ -129,15 +129,21 @@ void demonstrateTable(){
     
     cout << "Содержимое таблицы: " << endl;
     cout << "Количество записей: " << table->count() << endl;
-    cout << *table;
+    table->print();
+    cout << endl;
 
     cout << "Изменение записей" << endl;
     table->update(0, new Parameter("Другой параметр", "0", "updated", false));
-    cout << *table;
+    table->print();
+    cout << endl;
 
     cout << "Удаление записей" << endl;
     table->remove(1);
-    cout << *table;
+    table->print();
+    cout << endl;
+
+    cout << "Демонстрация перегруженного оператора присваивания" << endl;
+    cout << *table << endl;
 
     cout << "Вывод одной записи, используя перегруженную операцию индексирования" << endl;
     cout << *(*table)[1];
