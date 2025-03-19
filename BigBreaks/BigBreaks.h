@@ -47,4 +47,6 @@ class BigBreaks: public Parameter {
         friend ostream& operator << (ostream& out, BigBreaks& bigBreaks);
 
         const BigBreaks& operator=(const BigBreaks& bigBreaks);
+
+        virtual void print() override;
 };

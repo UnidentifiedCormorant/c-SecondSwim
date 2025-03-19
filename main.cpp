@@ -41,6 +41,10 @@ void demonstrateParameter(){
         true
     );
     cout << *parameterEqual << endl;
+
+    delete parameter;
+    delete parameterCopied;
+    delete parameterEqual;
 }
         
 void demonstrateBigBreaks(){
@@ -98,6 +102,10 @@ void demonstrateBigBreaks(){
         100
     );
     cout << *bigBreaksEqual << endl;
+
+    delete bigBreak;
+    delete bigBreakCopierd;
+    delete bigBreaksEqual;
 }
 
 void demonstrateTable(){
@@ -133,6 +141,8 @@ void demonstrateTable(){
 
     cout << "Вывод одной записи, используя перегруженную операцию индексирования" << endl;
     cout << *(*table)[1];
+
+    delete table;
 }
 
 int main()

@@ -30,9 +30,9 @@ Parameter::Parameter(
 
 //Конструктор копирования
 Parameter::Parameter(const Parameter& parameter){
-    _name = parameter._name;
-    _value = parameter._value;
-    _rating = parameter._rating;
+    _name = copyString(_name, parameter._name);
+    _value = copyString(_value, parameter._value);
+    _rating = copyString(_rating, parameter._rating);
     _visible = parameter._visible;
 }
 
@@ -111,4 +111,8 @@ const Parameter& Parameter::operator= (const Parameter& parameter){
     setVisible(parameter._visible);
 
     return *this;
+}
+
+void Parameter::print(){
+    cout << *this << endl;
 }

@@ -7,6 +7,9 @@ Table::Table(){
 }
 
 Table::~Table(){
+    for(int i = 0; i <= _lastRecordPosition; i++){
+        delete _records[i];
+    }
     delete[] _records;
 }
 
@@ -67,4 +70,10 @@ ostream& operator << (ostream& out, Table& table){
 
 Parameter* Table::operator[](int position){
     return _records[position];
+}
+
+void Table::print(){
+    for(int i = 0; i <= this->_lastRecordPosition; i++){
+        this->_records[i]->print();
+    }
 }

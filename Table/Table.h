@@ -25,4 +25,6 @@ class Table {
 
         //Перегрузка оператора индексирования
         Parameter* operator[](int position);
+
+        void print();
 };

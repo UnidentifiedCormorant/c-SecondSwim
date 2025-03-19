@@ -17,13 +17,7 @@ BigBreaks::BigBreaks(
 
 };
 
-BigBreaks::BigBreaks(const BigBreaks& bigBreak){
-    Parameter parameter = (Parameter)bigBreak;
-    setName(parameter.getName());
-    setValue(parameter.getValue());
-    setRating(parameter.getRating());
-    setVisible(parameter.getVisible());
-
+BigBreaks::BigBreaks(const BigBreaks& bigBreak): Parameter(bigBreak){
     _hasBreaks = bigBreak._hasBreaks;
     _maxBreak = bigBreak._maxBreak;
     _breaksCount = bigBreak._breaksCount;
@@ -69,6 +63,10 @@ int BigBreaks::getBreaksCount(){
     return _breaksCount;
 };
 
+BigBreaks::~BigBreaks(){
+    
+}
+
 ostream& operator << (ostream& out, BigBreaks& bigBreaks){
     return out
         << "Название параметра: " << bigBreaks.getName() << std::endl
@@ -85,15 +83,15 @@ const BigBreaks& BigBreaks::operator= (const BigBreaks& bigBreak){
         return *this;
     }
 
-    Parameter parameter = (Parameter)bigBreak;
-    setName(parameter.getName());
-    setValue(parameter.getValue());
-    setRating(parameter.getRating());
-    setVisible(parameter.getVisible());
+    Parameter::operator=(bigBreak);
 
     setHasBreaks(bigBreak._hasBreaks);
     setMaxBreak(bigBreak._maxBreak);
     setBreaksCount(bigBreak._maxBreak);
 
     return *this;
+}
+
+void BigBreaks::print(){
+    cout << *this << endl;
 }

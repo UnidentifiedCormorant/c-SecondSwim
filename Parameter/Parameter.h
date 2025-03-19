@@ -54,4 +54,7 @@ class Parameter
 
         //Перегрузка операции присваивания
         const Parameter& operator=(const Parameter& parameter);
+
+        //Вывод в консоль
+        virtual void print();
 };
